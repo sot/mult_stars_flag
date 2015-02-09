@@ -1,0 +1,55 @@
+# Run on ccosmos (fails weirdly on kadi)
+
+rm -rf obs4041/case1
+runasp --obsid=4041 --dir=obs4041 --label=case1 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs4041 --case=case1
+runasp --obsid=4041 --dir=obs4041 --label=case1 --pipe-start-at=run_forward_kalman
+
+runasp --obsid=4041 --dir=obs4041 --label=baseline
+
+runasp --obsid=4041 --dir=obs4041 --label=case2 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs4041 --case=case2
+runasp --obsid=4041 --dir=obs4041 --label=case2 --pipe-start-at=run_forward_kalman
+
+runasp --obsid=4041 --dir=obs4041 --label=case3 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs4041 --case=case3
+runasp --obsid=4041 --dir=obs4041 --label=case3 --pipe-start-at=run_forward_kalman
+
+runasp --obsid=4041 --dir=obs4041 --label=case6 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs4041 --case=case6
+runasp --obsid=4041 --dir=obs4041 --label=case6 --pipe-start-at=run_forward_kalman
+
+
+
+runasp --obsid=2793 --dir=obs2793 --label=baseline --pipe-stop-before=run_smooth_kalman
+
+runasp --obsid=2793 --dir=obs2793 --label=case1 --pipe-stop-before=run_forward_kalman --range=0:+5000
+./inject_noise.py --dir=obs2793 --case=case1
+runasp --obsid=2793 --dir=obs2793 --label=case1 --pipe-start-at=run_forward_kalman --pipe-stop-before=run_smooth_kalman
+
+runasp --obsid=2793 --dir=obs2793 --label=case3 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs2793 --case=case3
+runasp --obsid=2793 --dir=obs2793 --label=case3 --pipe-start-at=run_forward_kalman
+
+runasp --obsid=2793 --dir=obs2793 --label=case4 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs2793 --case=case4
+runasp --obsid=2793 --dir=obs2793 --label=case4 --pipe-start-at=run_forward_kalman
+
+runasp --obsid=2793 --dir=obs2793 --label=case5 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs2793 --case=case5
+runasp --obsid=2793 --dir=obs2793 --label=case5 --pipe-start-at=run_forward_kalman --pipe-stop-before=run_smooth_kalman
+
+runasp --obsid=2793 --dir=obs2793 --label=case7 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs2793 --case=case7
+runasp --obsid=2793 --dir=obs2793 --label=case7 --pipe-start-at=run_forward_kalman --pipe-stop-before=run_smooth_kalman
+
+runasp --obsid=2793 --dir=obs2793 --label=case8 --pipe-stop-before=run_forward_kalman
+./inject_noise.py --dir=obs2793 --case=case8
+runasp --obsid=2793 --dir=obs2793 --label=case8 --pipe-start-at=run_forward_kalman --pipe-stop-before=run_smooth_kalman
+
+runasp --obsid=2793 --dir=obs2793 --label=base5000 --pipe-stop-before=run_smooth_kalman --range=0:+5000
+
+runasp --obsid=2793 --dir=obs2793 --label=multstar1 --pipe-stop-before=run_forward_kalman --range=0:+5000
+./inject_noise.py --dir=obs2793 --case=multstar1
+runasp --obsid=2793 --dir=obs2793 --label=multstar1 --pipe-start-at=run_forward_kalman --pipe-stop-before=run_smooth_kalman
+
